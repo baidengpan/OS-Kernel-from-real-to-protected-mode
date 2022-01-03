@@ -1,3 +1,5 @@
+; https://blog.csdn.net/tyler_download/article/details/52021120 java开发操作系统内核：由实模式进入保护模式之32位寻址
+
 %include "pm.inc"
 
 org   0x9000
@@ -49,7 +51,7 @@ LABEL_BEGIN:
      or    al,  00000010b
      out   92h, al
 
-     mov   eax, cr0
+     mov   eax, cr0     ;进入保护模式，0位是保护允许位PE(Protedted Enable)，用于启动保护模式，如果PE位置1，则保护模式启动，如果PE=0，则在实模式下运行。
      or    eax , 1
      mov   cr0, eax
 
